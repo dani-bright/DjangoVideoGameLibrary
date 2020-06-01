@@ -8,7 +8,7 @@ from functools import reduce
 import operator
 from django.contrib import messages
 from django.urls import reverse
-from website.models import Game, Article
+from website.models import Game, Article, Favorite
 from django.shortcuts import render, get_object_or_404
 from .filters import GameFilter
 
@@ -86,5 +86,31 @@ def login(request):
 
 def game(request):
     games = Game.objects.all()
+    favorites = Favorite.objects.all()
+    for game in games:
+        if game in favorites:
+            game.isFavorite=True
+        else:
+            game.isFavorite=False
+
     game_filter = GameFilter(request.GET, queryset=games)
+
     return render(request, 'website/game.html', {'filter': game_filter})
+
+def favorite(request, idUser, idGame):
+    game = get_object_or_404(Game, id=idGame)
+    user = get_object_or_404(User, id=idUser)
+
+    favorite = Favorite(user=user, game=game)
+    favorite.save()
+    if favorite:
+        messages.success(request, "succeed")
+        return redirect('/games')
+
+    else:
+        messages.error(request, "echec")
+
+
+
+
+

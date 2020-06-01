@@ -5,18 +5,24 @@
 <form method="get">
     {{ filter.form.as_p }}
     <button type="submit">Search</button>
-  </form>
+</form>
 <div class="container">
     <div class="row">
-    {% for game in filter.qs %}
+        {% for game in filter.qs %}
         <div class="col">
             <p>{{game.title}}</p>
             {% load static %}
             <img class="cropped center widthGames" src="{% static 'website/img/' %}{{ game.img }}"/>
+            {% if game.isFavorite %}
+            <a href="{% url 'addFavorite' user.id game.id %}"><i class="fa fa-heart"></i></a>
+            {% else %}
+            <a href="{% url 'addFavorite' user.id game.id %}"><i class="far fa-heart"></i></a>
+            {% endif %}
+
         </div>
-    {% empty %}
+        {% empty %}
         <p>Aucun jeu.</p>
-    {% endfor %}
+        {% endfor %}
     </div>
 </div>
 
