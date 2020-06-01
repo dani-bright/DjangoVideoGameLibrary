@@ -86,29 +86,34 @@ def login(request):
 
 def game(request):
     games = Game.objects.all()
+    messages.success(request, "heeey")
+    favoriteGames = []
+
     favorites = Favorite.objects.all()
     for game in games:
-        if game in favorites:
-            game.isFavorite=True
-        else:
-            game.isFavorite=False
+        for favorite in favorites:
+            if game == favorite.game:
+                messages.success(request, "heeey")
+                favoriteGames.append(game)
 
     game_filter = GameFilter(request.GET, queryset=games)
 
-    return render(request, 'website/game.html', {'filter': game_filter})
+    return render(request, 'website/game.html', {'filter': game_filter, 'favoriteGames': favoriteGames})
 
 def favorite(request, idUser, idGame):
     game = get_object_or_404(Game, id=idGame)
     user = get_object_or_404(User, id=idUser)
 
-    favorite = Favorite(user=user, game=game)
-    favorite.save()
-    if favorite:
-        messages.success(request, "succeed")
+    try:
+        existing =Favorite.objects.get(user=user, game=game)
+        existing.delete()
         return redirect('/games')
 
-    else:
-        messages.error(request, "echec")
+    except:
+        favorite = Favorite(user=user, game=game)
+        favorite.save()
+        if favorite:
+            return redirect('/games')
 
 
 
