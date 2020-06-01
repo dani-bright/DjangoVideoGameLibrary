@@ -2,12 +2,6 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(null=True, blank=True, upload_to="avatars/")
-
-    def __str__(self):
-        return self.user.username
 
 class Category(models.Model):
     name = models.CharField(max_length=60)
@@ -44,5 +38,5 @@ class Game(models.Model):
         return self.title
 
 class Favorite(models.Model):
-    user = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     game = models.ForeignKey('Game', on_delete=models.CASCADE)

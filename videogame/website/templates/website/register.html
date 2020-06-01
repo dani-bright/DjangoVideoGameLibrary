@@ -1,36 +1,25 @@
 {% extends "website/base.html" %}
 {% block title %}Inscription{% endblock %}
 {% block content %}
-    <h2>Inscription</h2>
-    <form>
-        <div class="form-group centered-input">
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="lastname" placeholder="Nom">
-            </div>
+<h2>Inscription</h2>
+<ul class="messages">
+    {% for message in messages %}
+    <li
+            {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
+    </li>
+    {% endfor %}
+</ul>
+<form method="post" action=".">
+    {% csrf_token %}
+    <div class="form-group centered-input">
+        <div class="col-sm-6">
+            {{ form.as_p }}
         </div>
-        <div class="form-group centered-input">
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="firstname" placeholder="Prénom">
-            </div>
-        </div>
-        <div class="form-group centered-input">
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="username" placeholder="Pseudo">
-            </div>
-        </div>
-        <div class="form-group centered-input">
-            <div class="col-sm-6">
-                <input type="email" class="form-control" id="email" placeholder="Email">
-            </div>
-        </div>
-        <div class="form-group centered-input">
-            <div class="col-sm-6">    
-                <input type="password" class="form-control" id="password" placeholder="Password">
-            </div>
-        </div>
-        <div class="text-center">
-            <button type="submit" class="btn btn-primary">Valider</button>
-        </div>
-    </form>
+    </div>
+
+    <div class="text-center">
+        <input type="submit" class="btn btn-primary" value="Valider">
+    </div>
+</form>
 {% endblock %}
 
