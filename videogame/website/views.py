@@ -1,8 +1,11 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.db.models import Q
 from django.contrib.auth import authenticate, login as auth_login, logout
 from .forms import LoginForm, RegisterForm
+from functools import reduce
+import operator
 from django.contrib import messages
 from django.urls import reverse
 from website.models import Game, Article
@@ -12,6 +15,21 @@ from .filters import GameFilter
 def home(request):
     articles = Article.objects.all()
     return render(request, 'website/home.html', locals())
+
+def search(request):
+    articles = Article.objects.all()
+
+    query = request.GET['q']
+    if query:
+        query_list = query.split()
+        articles = articles.filter(
+                reduce(operator.and_,
+                       (Q(title__icontains=q) for q in query_list)) |
+                reduce(operator.and_,
+                       (Q(content__icontains=q) for q in query_list))
+            )
+
+    return render(request, 'website/search.html', locals())
 
 def read(request, id):
     article = get_object_or_404(Article, id=id)
