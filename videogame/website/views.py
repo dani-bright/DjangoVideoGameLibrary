@@ -5,12 +5,19 @@ from django.contrib.auth import authenticate, login as auth_login, logout
 from .forms import LoginForm, RegisterForm
 from django.contrib import messages
 from django.urls import reverse
-from website.models import Game
+from website.models import Game, Article
+from django.shortcuts import render, get_object_or_404
+
 
 
 
 def home(request):
+    articles = Article.objects.all()
     return render(request, 'website/home.html', locals())
+
+def read(request, id):
+    article = get_object_or_404(Article, id=id)
+    return render(request, 'website/read.html', {'article':article})
 
 def Logout(request):
     logout(request)
