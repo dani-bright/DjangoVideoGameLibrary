@@ -13,7 +13,7 @@ def home(request):
 
 def Logout(request):
     logout(request)
-    return redirect(reverse(login))
+    return redirect('')
 
 def register(request):
     error = False
