@@ -10,7 +10,7 @@
         {% for article in articles %}
         <div class="col-md-4">
             <h3>{{ article.title }}</h3>
-            <p>{{ article.content|truncatewords_html:50 }}</p>
+            <p>{{ article.content|truncatewords_html:15 }}</p>
             <p><a class="btn btn-primary btn-lg" href="{% url 'read' article.id %}">Lire la suite</a></p>
         </div>
         {% empty %}
