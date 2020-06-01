@@ -22,6 +22,12 @@
                 <a class="nav-link" href="/register">Inscription</a>
             </li>
             {% if user.is_authenticated %}
+            {% if user.is_superuser %}
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">Administration</a>
+            </li>
+            {% endif %}
+
             <li class="nav-item">
                 <a class="nav-link" href="/logout">Deconnexion</a>
             </li>

@@ -1,9 +1,22 @@
 {% extends "website/base.html" %}
 {% block title %}Ma page d'accueil{% endblock %}
 {% block content %}
-    <h2>Bienvenue !</h2>
-    <p>
-       Accueil et mettre des images (carousel par exemple)
-    </p>
+<div class="container">
+    <h2 class="display-3">Bienvenue sur DjangoVideoGameLibrary</h2>
+    <p>The le site des dernières actu jeux vidéoludique</p>
+</div>
+<div class="container">
+    <div class="row">
+        {% for article in articles %}
+        <div class="col-md-4">
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.content|truncatewords_html:50 }}</p>
+            <p><a class="btn btn-primary btn-lg" href="{% url 'read' article.id %}">Lire la suite</a></p>
+        </div>
+        {% empty %}
+        <p>Aucun article.</p>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
 
