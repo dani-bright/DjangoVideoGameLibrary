@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'website'
+    'website',
+    'django_filters'
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'website/static/website/img')

@@ -2,12 +2,17 @@
 {% block title %}Jeux{% endblock %}
 {% block content %}
 <h2>Liste des jeux</h2>
+<form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
 <div class="container">
     <div class="row">
-    {% for game in games %}
+    {% for game in filter.qs %}
         <div class="col">
             <p>{{game.title}}</p>
-            <img class="cropped center widthGames" src="{{ game.img.url }}"}  />
+            {% load static %}
+            <img class="cropped center widthGames" src="{% static 'website/img/' %}{{ game.img }}"/>
         </div>
     {% empty %}
         <p>Aucun jeu.</p>
