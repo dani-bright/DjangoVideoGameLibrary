@@ -1,6 +1,5 @@
 from django.http import HttpResponse, Http404
+from django.shortcuts import render, redirect
 
 def home(request):
-    return HttpResponse("""
-        <h1>Bienvenue sur DW Games</h1>
-    """)
+    return render(request, 'website/home.html', locals())
