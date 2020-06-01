@@ -1,7 +1,6 @@
 .idea/
 website/migrations/
-website/migrations/__pycache__/
 website/__pycache__/
 videogame/__pycache__/
 
-db.sqlite3
+videogame/db.sqlite3

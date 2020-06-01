@@ -12,8 +12,8 @@ class Category(models.Model):
 class Article(models.Model):
     title = models.CharField(max_length=100)
     date = models.DateTimeField(default=timezone.now, verbose_name="Date de parution")
-    content = models.TextField(null=True)
-    game = models.ForeignKey('Game', on_delete=models.CASCADE, null=True)
+    content = models.TextField()
+    game = models.ForeignKey('Game', on_delete=models.CASCADE, null=True, blank = True)
 
 
     class Meta:
