@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout
 from .forms import LoginForm, RegisterForm
 from django.contrib import messages
 from django.urls import reverse
+from website.models import Game
 
 
 
@@ -59,3 +60,7 @@ def login(request):
         form = LoginForm()
 
     return render(request, 'website/login.html', locals())
+
+def game(resquest):
+    games = Game.objects.all()
+    return render(request, 'website/game.html', {'games' : games})
