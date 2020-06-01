@@ -2,5 +2,4 @@
 website/migrations/
 website/__pycache__/
 videogame/__pycache__/
-
 videogame/db.sqlite3
