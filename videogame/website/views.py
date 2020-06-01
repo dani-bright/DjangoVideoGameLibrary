@@ -7,9 +7,7 @@ from django.contrib import messages
 from django.urls import reverse
 from website.models import Game, Article
 from django.shortcuts import render, get_object_or_404
-
-
-
+from .filters import GameFilter
 
 def home(request):
     articles = Article.objects.all()
@@ -68,6 +66,7 @@ def login(request):
 
     return render(request, 'website/login.html', locals())
 
-def game(resquest):
+def game(request):
     games = Game.objects.all()
-    return render(request, 'website/game.html', {'games' : games})
+    game_filter = GameFilter(request.GET, queryset=games)
+    return render(request, 'website/game.html', {'filter': game_filter})
