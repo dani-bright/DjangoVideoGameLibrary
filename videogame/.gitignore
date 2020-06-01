@@ -1,4 +1,5 @@
 .idea/
+website/migrations/
 website/migrations/__pycache__/
 website/__pycache__/
 videogame/__pycache__/
