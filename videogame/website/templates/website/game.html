@@ -1,0 +1,18 @@
+{% extends "website/base.html" %}
+{% block title %}Jeux{% endblock %}
+{% block content %}
+<h2>Liste des jeux</h2>
+<div class="container">
+    <div class="row">
+    {% for game in games %}
+        <div class="col">
+            <p>{{game.title}}</p>
+            <img class="cropped center widthGames" src="{{ game.img.url }}"}  />
+        </div>
+    {% empty %}
+        <p>Aucun jeu.</p>
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
