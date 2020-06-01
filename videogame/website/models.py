@@ -1,8 +1,10 @@
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar = models.ImageField(null=True, blank=True, upload_to="avatars/")
 
     def __str__(self):
         return self.user.username
@@ -17,6 +19,8 @@ class Article(models.Model):
     title = models.CharField(max_length=100)
     date = models.DateTimeField(default=timezone.now, verbose_name="Date de parution")
     content = models.TextField(null=True)
+    game = models.ForeignKey('Game', on_delete=models.CASCADE)
+
 
     class Meta:
         verbose_name = "article"
