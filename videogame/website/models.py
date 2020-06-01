@@ -26,7 +26,7 @@ class Article(models.Model):
 class Game(models.Model):
     title = models.CharField(max_length=100)
     editor = models.CharField(max_length=42)
-    img = models.TextField(null=True)
+    img = models.ImageField(null=False)
     description =models.TextField(null=False)
     releaseDate = models.DateTimeField(verbose_name="Date de parution")
     category = models.ForeignKey('Category', on_delete=models.CASCADE)

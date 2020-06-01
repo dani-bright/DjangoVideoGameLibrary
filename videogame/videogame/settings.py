@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'website'
 ]
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'website/static/website/img')
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
