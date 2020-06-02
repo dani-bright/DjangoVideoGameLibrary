@@ -12,7 +12,9 @@
         <div class="col">
             <p>{{game.title}}</p>
             {% load static %}
-            <img class="cropped center widthGames" src="{% static 'website/img/' %}{{ game.img }}"/>
+            <a href="{% url 'gamesDetails' game.id %}">
+                <img class="cropped center widthGames" src="{% static 'website/img/' %}{{ game.img }}"/>
+            </a>
             {% if user.id %}
             {% if game in favoriteGames %}
             <a href="{% url 'addFavorite' user.id game.id %}"><i class="fa fa-heart"></i></a>

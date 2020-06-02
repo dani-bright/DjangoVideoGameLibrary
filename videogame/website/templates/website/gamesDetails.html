@@ -1,0 +1,10 @@
+{% extends "website/base.html" %}
+{% block title %}Détails du jeu{% endblock %}
+{% block content %}
+<h1>{{ games.title }}</h1>
+    <p class="infos">date de parution : {{ games.releaseDate|date:"DATE_FORMAT" }}</p>
+    <p class="infos">type : {{ games.category }}</p>
+<div class="contenu">{{ games.description }}</div>
+{% load static %}
+    <img class="cropped center widthGames" src="{% static 'website/img/' %}{{ games.img }}"/>
+{% endblock %}
