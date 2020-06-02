@@ -86,14 +86,12 @@ def login(request):
 
 def game(request):
     games = Game.objects.all()
-    messages.success(request, "heeey")
     favoriteGames = []
 
     favorites = Favorite.objects.all()
     for game in games:
         for favorite in favorites:
             if game == favorite.game:
-                messages.success(request, "heeey")
                 favoriteGames.append(game)
 
     game_filter = GameFilter(request.GET, queryset=games)
