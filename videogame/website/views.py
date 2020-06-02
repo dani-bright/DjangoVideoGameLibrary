@@ -117,5 +117,16 @@ def gamesDetails(request, id):
     games = get_object_or_404(Game, id=id)
     return render(request, 'website/gamesDetails.html', {'games':games})
 
+def myList(request):
+    games = Game.objects.all()
+    favoriteGames = []
+
+    favorites = Favorite.objects.all()
+    for game in games:
+        for favorite in favorites:
+            if game == favorite.game:
+                favoriteGames.append(game)
+
+    return render(request, 'website/myList.html', {'favoriteGames': favoriteGames})
 
 

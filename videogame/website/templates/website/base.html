@@ -23,7 +23,7 @@
                 <a class="nav-link" href="/games">Jeux</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/register">Inscription</a>
+                <a class="nav-link" href="/mylist">Ma liste</a>
             </li>
             {% if user.is_authenticated %}
             {% if user.is_superuser %}
@@ -36,6 +36,9 @@
                 <a class="nav-link" href="/logout">Deconnexion</a>
             </li>
             {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="/register">Inscription</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/login">Connexion</a>
             </li>
