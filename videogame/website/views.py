@@ -113,7 +113,9 @@ def favorite(request, idUser, idGame):
         if favorite:
             return redirect('/games')
 
-
+def gamesDetails(request, id):
+    games = get_object_or_404(Game, id=id)
+    return render(request, 'website/gamesDetails.html', {'games':games})
 
 
 
