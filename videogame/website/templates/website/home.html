@@ -3,15 +3,16 @@
 {% block content %}
 <div class="container">
     <h2 class="display-3">Bienvenue sur DjangoVideoGameLibrary</h2>
-    <p>The le site des dernières actu jeux vidéoludique</p>
+    <p>Le site des dernières actualités jeux vidéoludique</p>
 </div>
+<br>
 <div class="container">
     <div class="row">
         {% for article in articles %}
-        <div class="col-md-4">
+        <div class="col-4">
             <h3>{{ article.title }}</h3>
             <p>{{ article.content|truncatewords_html:15 }}</p>
-            <p><a class="btn btn-primary btn-lg" href="{% url 'read' article.id %}">Lire la suite</a></p>
+            <p><a class="btn btn-primary btn-sm" href="{% url 'read' article.id %}">Lire la suite</a></p>
         </div>
         {% empty %}
         <p>Aucun article.</p>

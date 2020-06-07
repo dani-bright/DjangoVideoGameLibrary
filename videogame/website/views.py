@@ -35,10 +35,6 @@ def read(request, id):
     article = get_object_or_404(Article, id=id)
     return render(request, 'website/read.html', {'article':article})
 
-def Logout(request):
-    logout(request)
-    return redirect('')
-
 def register(request):
     error = False
 
