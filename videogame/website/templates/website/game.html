@@ -12,8 +12,8 @@
 <div class="container">
     <div class="row">
         {% for game in filter.qs %}
-        <div class="col">
-            <p>{{game.title}}</p>
+        <div class="col-4">
+            <p style="padding-top: 1em">{{game.title}}</p>
             {% load static %}
             <a href="{% url 'gamesDetails' game.id %}">
                 <img class="cropped center widthGames" src="{% static 'website/img/' %}{{ game.img }}"/>
@@ -32,5 +32,4 @@
         {% endfor %}
     </div>
 </div>
-
 {% endblock %}
