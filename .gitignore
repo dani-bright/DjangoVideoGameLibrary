@@ -1,5 +1,5 @@
 .idea/
 videogame/website/migrations/*
-videogame/website/__pycache__/*
+__pycache__/
 videogame/videogame/__pycache__/*
 videogame/db.sqlite3
