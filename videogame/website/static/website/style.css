@@ -42,3 +42,26 @@ h2 {
     margin-left: auto;
     margin-right: auto;
 }
+
+label[for="id_category"] {
+    display: none
+}
+
+button#buttonFilter {
+    position: absolute;
+    margin: -41px 0px 0px 148px;
+    border-radius: 25px;
+    border: 1px solid #dedede;
+    font-size: 14px;
+}
+
+#id_category {
+    border-radius: 6px;
+    border: 2px solid #dedede;
+}
+
+#user-connection {
+    height: 46px;
+    line-height: 46px;
+    margin-right: 17px;
+}

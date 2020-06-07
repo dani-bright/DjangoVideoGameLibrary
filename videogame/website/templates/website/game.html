@@ -2,9 +2,12 @@
 {% block title %}Jeux{% endblock %}
 {% block content %}
 <h2>Liste des jeux</h2>
+{% load static %}
 <form method="get">
-    {{ filter.form.as_p }}
-    <button type="submit">Search</button>
+    <div class="form-group">
+    {{ filter.form }}
+    </div>
+    <button type="submit" id="buttonFilter">Valider</button>
 </form>
 <div class="container">
     <div class="row">
